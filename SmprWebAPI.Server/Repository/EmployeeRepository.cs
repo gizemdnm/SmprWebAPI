@@ -30,7 +30,7 @@ namespace SmprWebAPI.Server.Repository
 				await _appDbContext.SaveChangesAsync();
 			}
 		}
-		public async Task Update(Employee employee)
+		public async Task UpdateEmp(Employee employee)
 		{
 			var existingEmp = await _appDbContext.Employees.FindAsync(employee.Id);
 			if(existingEmp != null)
@@ -43,7 +43,7 @@ namespace SmprWebAPI.Server.Repository
 				existingEmp.Status = employee.Status;
 				
 				
-				_appDbContext.Employees.Update(employee);
+				_appDbContext.Employees.Update(existingEmp);
 				await _appDbContext.SaveChangesAsync();
 			}
 		}
